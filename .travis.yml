@@ -39,4 +39,3 @@ deploy:
   target-branch: master
   on:
     branch: develop
-
