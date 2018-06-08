@@ -29,7 +29,7 @@ node_js:
 git:
   depth: 3
 script:
-  - yarn build
+  - npm run-script build
 deploy:
   provider: pages
   skip-cleanup: true
@@ -39,4 +39,4 @@ deploy:
   target-branch: master
   on:
     branch: develop
-    
+
