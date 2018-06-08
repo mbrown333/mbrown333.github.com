@@ -13,3 +13,29 @@ node_js:
 script:
   - npm install
   - npm run lint
+
+language: node_js
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email:
+    recipients:
+      - mattbrown33@icloud.com
+    on_success: always
+    on_failure: always
+node_js:
+  - '9'
+git:
+  depth: 3
+script:
+  - yarn build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  keep-history: true
+  github-token: d5a20fa210af6d4afddf1ddd8ef1f85243d88f78
+  local-dir: public
+  target-branch: master
+  on:
+    branch: develop
