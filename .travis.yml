@@ -21,7 +21,7 @@ cache:
 notifications:
   email:
     recipients:
-      - mattbrown33@icloud.com
+      - matthew.brown.js@gmail.com
     on_success: always
     on_failure: always
 node_js:
@@ -29,7 +29,7 @@ node_js:
 git:
   depth: 3
 script:
-  - npm run-script build
+  - gatsby build
 deploy:
   provider: pages
   skip-cleanup: true

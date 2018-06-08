@@ -2,9 +2,9 @@
   "name": "gatsby-starter-blog",
   "description": "Starter Gatsby Blog",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Matthew Brown <matthew.brown.js@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby-starter-blog/issues"
+    "url": "https://github.com/mbrown333/mbrown333.github.io/issues"
   },
   "dependencies": {
     "gatsby": "^1.9.250",
@@ -34,7 +34,7 @@
     "gh-pages": "^1.1.0",
     "prettier": "^1.12.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/mbrown333/mbrown333.github.io#readme",
   "keywords": [
     "gatsby"
   ],
@@ -42,7 +42,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "https://github.com/mbrown333/mbrown333.github.io"
   },
   "scripts": {
     "dev": "gatsby develop",
