@@ -34,7 +34,7 @@ deploy:
   provider: pages
   skip-cleanup: true
   keep-history: true
-  github-token: d5a20fa210af6d4afddf1ddd8ef1f85243d88f78
+  github-token: $GITHUB_TOKEN
   local-dir: public
   target-branch: master
   on:
