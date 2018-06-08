@@ -1,149 +1,142 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://github.com/mbrown333/mbrown333.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 08 Jun 2018 18:25:35 GMT</lastBuildDate><item><title><![CDATA[Hello New Blog]]></title><description><![CDATA[Hello World]]></description><link>https://github.com/mbrown333/mbrown333.github.io/new-blog/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/new-blog/</guid><pubDate>Invalid Date</pubDate><content:encoded>&lt;p&gt;Hello World&lt;/p&gt;</content:encoded></item><item><title><![CDATA[New Beginnings]]></title><description><![CDATA[Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/hi-folks/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/hi-folks/</guid><pubDate>Thu, 28 May 2015 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-right at the coast of the Semantics, a large language ocean. A small river named
-Duden flows by their place and supplies it with the necessary regelialia.&lt;/p&gt;
-&lt;h2&gt;On deer horse aboard tritely yikes and much&lt;/h2&gt;
-&lt;p&gt;The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Matthew Brown's JS Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://github.com/mbrown333/mbrown333.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 08 Jun 2018 19:58:04 GMT</lastBuildDate><item><title><![CDATA[Functional Stateless Components in React]]></title><description><![CDATA[In this article I’m going to explain functional stateless React components using simple code examples. Now this may sound abstract, but the…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/20180409-functional-stateless-components-in-react/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/20180409-functional-stateless-components-in-react/</guid><pubDate>Mon, 09 Apr 2018 22:02:52 GMT</pubDate><content:encoded>&lt;p&gt;In this article I’m going to explain functional stateless React components using simple code examples. Now this may sound abstract, but the idea behind this is very simple. The idea is that functional stateless components are just displaying data that is passed to them through props. That is it. No state, no methods, just plugging data into a template and returning a component to render.&lt;/p&gt;
+&lt;p&gt;When you see components in React they are normally declared in one of two ways. The first extends &lt;code class=&quot;language-text&quot;&gt;React.Component&lt;/code&gt;. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;class FancyComponent extends React.Component { 
+    constructor(props) { 
+      super(props); 
+    } 
+    ...
+}&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;The example uses ES6 class notation to extend &lt;code class=&quot;language-text&quot;&gt;React.Component&lt;/code&gt;. You use this method when you are creating a component that does one of the following: &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;This however showed weasel&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Well uncritical so misled&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;this is very interesting&lt;/li&gt;
+&lt;li&gt;Uses state&lt;/li&gt;
+&lt;li&gt;Uses a life cycle method (i.e. &lt;em&gt;componentDidMount&lt;/em&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Goodness much until that fluid owl&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;When she reached the first hills of the &lt;strong&gt;Italic Mountains&lt;/strong&gt;, she had a last
-view back on the skyline of her hometown &lt;em&gt;Bookmarksgrove&lt;/em&gt;, the headline of
-&lt;a href=&quot;http://google.com&quot;&gt;Alphabet Village&lt;/a&gt; and the subline of her own road, the Line
-Lane. Pityful a rethoric question ran over her cheek, then she continued her
-way. On her way she met a copy.&lt;/p&gt;
-&lt;h3&gt;Overlaid the jeepers uselessly much excluding&lt;/h3&gt;
-&lt;p&gt;But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with
-&lt;a href=&quot;http://google.com&quot;&gt;Longe and Parole&lt;/a&gt; and dragged her into their agency, where
-they abused her for their projects again and again. And if she hasn’t been
-rewritten, then they are still using her.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-right at the coast of the Semantics, a large language ocean.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;It is a paradisematic country, in which roasted parts of sentences fly into your
-mouth. Even the all-powerful Pointing has no control about the blind texts it is
-an almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar.&lt;/p&gt;
-&lt;h3&gt;According a funnily until pre-set or arrogant well cheerful&lt;/h3&gt;
-&lt;p&gt;The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;So baboon this&lt;/li&gt;
-&lt;li&gt;Mounted militant weasel gregariously admonishingly straightly hey&lt;/li&gt;
-&lt;li&gt;Dear foresaw hungry and much some overhung&lt;/li&gt;
-&lt;li&gt;Rash opossum less because less some amid besides yikes jeepers frenetic
-impassive fruitlessly shut&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;When she reached the first hills of the Italic Mountains, she had a last view
-back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
-Village and the subline of her own road, the Line Lane. Pityful a rethoric
-question ran over her cheek, then she continued her way. On her way she met a
-copy.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The copy warned the Little Blind Text, that where it came from it would have
-been rewritten a thousand times and everything that was left from its origin
-would be the word “and” and the Little Blind Text should turn around and
-return to its own, safe country.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with Longe and Parole
-and dragged her into their agency, where they abused her for their projects
-again and again. And if she hasn’t been rewritten, then they are still using
-her. Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts.&lt;/p&gt;
-&lt;h4&gt;Silent delightfully including because before one up barring chameleon&lt;/h4&gt;
-&lt;p&gt;Separated they live in Bookmarksgrove right at the coast of the Semantics, a
-large language ocean. A small river named Duden flows by their place and
-supplies it with the necessary regelialia. It is a paradisematic country, in
-which roasted parts of sentences fly into your mouth.&lt;/p&gt;
-&lt;p&gt;Even the all-powerful Pointing has no control about the blind texts it is an
-almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox
-advised her not to do so, because there were thousands of bad Commas, wild
-Question Marks and devious Semikoli, but the Little Blind Text didn’t listen.&lt;/p&gt;
-&lt;h5&gt;Wherever far wow thus a squirrel raccoon jeez jaguar this from along&lt;/h5&gt;
-&lt;p&gt;She packed her seven versalia, put her initial into the belt and made herself on
-the way. When she reached the first hills of the Italic Mountains, she had a
-last view back on the skyline of her hometown Bookmarksgrove, the headline of
-Alphabet Village and the subline of her own road, the Line Lane. Pityful a
-rethoric question ran over her cheek, then she continued her way. On her way she
-met a copy.&lt;/p&gt;
-&lt;h6&gt;Slapped cozy a that lightheartedly and far&lt;/h6&gt;
-&lt;p&gt;The copy warned the Little Blind Text, that where it came from it would have
-been rewritten a thousand times and everything that was left from its origin
-would be the word “and” and the Little Blind Text should turn around and return
-to its own, safe country. But nothing the copy said could convince her and so it
-didn’t take long until a few insidious Copy Writers ambushed her, made her drunk
-with Longe and Parole and dragged her into their agency, where they abused her
-for their projects again and again.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[My Second Post!]]></title><description><![CDATA[Wow! I love blogging so much already. Did you know that “despite its name, salted duck eggs can also be made from
-chicken eggs, though the…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/my-second-post/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/my-second-post/</guid><pubDate>Wed, 06 May 2015 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;Wow! I love blogging so much already.&lt;/p&gt;
-&lt;p&gt;Did you know that “despite its name, salted duck eggs can also be made from
-chicken eggs, though the taste and texture will be somewhat different, and the
-egg yolk will be less rich.”?
-(&lt;a href=&quot;http://en.wikipedia.org/wiki/Salted_duck_egg&quot;&gt;Wikipedia Link&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;Yeah, I didn’t either.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hello World!!!]]></title><description><![CDATA[This is my first post on my new fake blog! How exciting! I’m sure I’ll write a lot more interesting things in the future. Oh, and here’s a…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/hello-world/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/hello-world/</guid><pubDate>Fri, 01 May 2015 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;This is my first post on my new fake blog! How exciting!&lt;/p&gt;
-&lt;p&gt;I’m sure I’ll write a lot more interesting things in the future.&lt;/p&gt;
-&lt;p&gt;Oh, and here’s a great quote from this Wikipedia on
-&lt;a href=&quot;http://en.wikipedia.org/wiki/Salted_duck_egg&quot;&gt;salted duck eggs&lt;/a&gt;.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A salted duck egg is a Chinese preserved food product made by soaking duck
-eggs in brine, or packing each egg in damp, salted charcoal. In Asian
-supermarkets, these eggs are sometimes sold covered in a thick layer of salted
-charcoal paste. The eggs may also be sold with the salted paste removed,
-wrapped in plastic, and vacuum packed. From the salt curing process, the
-salted duck eggs have a briny aroma, a gelatin-like egg white and a
-firm-textured, round yolk that is bright orange-red in color.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/salty_egg-8058f3f26913fea3b6a89a73344fe94a-3f5a1.jpg&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
+&lt;p&gt;In all likelihood you will be using the class approach for your container Components that hold a fair amount of logic and are composed of presentational components. For the lower level building blocks you can simply declare a function that returns the component that you want to display like the following example. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;function NotSoFancyComponent(props) { 
+  const { name, city, } = props; 
+  return &amp;lt;div&amp;gt;Hello, {name} from {city}!&amp;lt;/div&amp;gt; 
+} &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;In the &lt;code class=&quot;language-text&quot;&gt;NotSoFancyComponent&lt;/code&gt; we deconstruct the &lt;code class=&quot;language-text&quot;&gt;props&lt;/code&gt; object into the &lt;code class=&quot;language-text&quot;&gt;name&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;city&lt;/code&gt; constants. &lt;em&gt;(You don’t have to do it this way. It is perfectly fine to use {props.name} that is just my preference.)&lt;/em&gt; This is an example of a functional stateless component. No state, no life cycle methods required. Just taking in data as props and plugging it into a component. &lt;/p&gt;
+&lt;p&gt;We would use the component as follows. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;NotSoFancyComponent name=&amp;quot;Bob&amp;quot; city=&amp;quot;Kansas City&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;We can also make this declaration more succinct using an ES6 arrow function. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const NotSoFancyComponent = (props) =&amp;gt; &amp;lt;div&amp;gt;Hello, {props.name} from {props.city}!&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;The nice thing about keeping these components very simple is they can easily be re-used across your application or possibly multiple applications in a component library and you can be assured that they will display the same behavior everywhere. Cleaner code and better performance are two additional benefits to using this approach. &lt;/p&gt;
+&lt;p&gt;And if you happen to come to a point where you need to use state or a life cycle method it is very easy to refactor these functions to do so. Let’s say we want to leverage the &lt;code class=&quot;language-text&quot;&gt;componentDidMount&lt;/code&gt; life cycle hook with our example. This is the code changes we would need to make to make it work. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;class NotSoFancyComponent extends React.Component { 
+  constructor(props) { 
+    super(props); 
+  } 
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAMB/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAEEBf/aAAwDAQACEAMQAAABgik0dXC//8QAGRABAAMBAQAAAAAAAAAAAAAAAQACEhEy/9oACAEBAAEFAkqW2DlnRj73yf/EABcRAQADAAAAAAAAAAAAAAAAAAAREkH/2gAIAQMBAT8B1WX/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQL/2gAIAQIBAT8Bi6f/xAAbEAABBAMAAAAAAAAAAAAAAAAAAQIRISIxMv/aAAgBAQAGPwK9GNocyS8hCj//xAAbEAADAQADAQAAAAAAAAAAAAABESEAMUGBof/aAAgBAQABPyGxNMfrLHmCDZmAzzvJJDjEQCHv/9oADAMBAAIAAwAAABDIL//EABYRAQEBAAAAAAAAAAAAAAAAAAERAP/aAAgBAwEBPxARhylZv//EABgRAAIDAAAAAAAAAAAAAAAAAAABESFR/9oACAECAQE/EFoktI//xAAdEAEBAAICAwEAAAAAAAAAAAABEQAxIWFBcYHh/9oACAEBAAE/EEbMLQ0fMHDVaPIXyI4pk4JUnWacNCtO8ojDE9TGIYES7/Jn/9k=&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Chinese Salty Egg&quot;
-        title=&quot;&quot;
-        src=&quot;/static/salty_egg-8058f3f26913fea3b6a89a73344fe94a-f8fb9.jpg&quot;
-        srcset=&quot;/static/salty_egg-8058f3f26913fea3b6a89a73344fe94a-e8976.jpg 148w,
-/static/salty_egg-8058f3f26913fea3b6a89a73344fe94a-63df2.jpg 295w,
-/static/salty_egg-8058f3f26913fea3b6a89a73344fe94a-f8fb9.jpg 590w,
-/static/salty_egg-8058f3f26913fea3b6a89a73344fe94a-85e3d.jpg 885w,
-/static/salty_egg-8058f3f26913fea3b6a89a73344fe94a-d1924.jpg 1180w,
-/static/salty_egg-8058f3f26913fea3b6a89a73344fe94a-9452e.jpg 1770w,
-/static/salty_egg-8058f3f26913fea3b6a89a73344fe94a-3f5a1.jpg 2048w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-      /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
+  componentDidMount() { 
+    console.log(&amp;#39;NotSoFancyComponent did mount!&amp;#39;); 
+  } 
   
-  &lt;/a&gt;
-    &lt;/p&gt;</content:encoded></item></channel></rss>
+  render() { 
+    const { name, city, } = this.props; return &amp;lt;div&amp;gt;Hello, {name} from {city}!&amp;lt;/div&amp;gt; 
+  } 
+}&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;No drastic changes required. The declaration changes to a class extending &lt;code class=&quot;language-text&quot;&gt;React.Component&lt;/code&gt; and then move the function into the render function. &lt;/p&gt;
+&lt;p&gt;I hope this enhances your understanding of functional stateless components as it is a foundational concept for building applications in React.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[JavaScript's call, bind, and apply - A Quick Explanation]]></title><description><![CDATA[If you don’t use JavaScript’s call, bind, and apply regularly you might not be aware of what they do and how to use these native functions…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/20180409-javascripts-call-bind-and-apply-a-quick-explanation/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/20180409-javascripts-call-bind-and-apply-a-quick-explanation/</guid><pubDate>Mon, 09 Apr 2018 03:20:04 GMT</pubDate><content:encoded>&lt;p&gt;If you don’t use JavaScript’s call, bind, and apply regularly you might not be aware of what they do and how to use these native functions. I can remember for the longest time being aware they existed, but not really understanding what they were exactly. Having a good grasp on how these work will give you a deeper understanding of the JavaScript language. And if nothing else these functions tend to be a popular subject of JavaScript interview questions so being aware of how they work can still help you out even if you don’t use them regularly. &lt;/p&gt;
+&lt;p&gt;Bind, call, and apply are all part of the prototype object for all JavaScript functions. The reason these calls can come in handy is JavaScript’s &lt;code class=&quot;language-text&quot;&gt;this&lt;/code&gt;. Let’s take a look at some code. When you’re calling an object’s function and the object is the left of the dot as below then that object will be &lt;code class=&quot;language-text&quot;&gt;this&lt;/code&gt; when the &lt;code class=&quot;language-text&quot;&gt;printPerson&lt;/code&gt; function is called. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;(function() { 
+  const person = { 
+    age: 21, 
+    name: &amp;#39;Bob&amp;#39;, 
+    printPerson() { 
+      console.log(`${this.name} is ${this.age}`); 
+      } 
+    }; 
+
+    person.printPerson(); // Bob is 21 
+})(); &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;This works fine if you’re working with objects in an object oriented fashion where data and functionality are grouped together in the object. If you’re using a functional approach then this changes things. If we move the &lt;code class=&quot;language-text&quot;&gt;printPerson&lt;/code&gt; function out of the &lt;code class=&quot;language-text&quot;&gt;person&lt;/code&gt; object and declare it as a function elsewhere then we’ve lost the ability to use &lt;code class=&quot;language-text&quot;&gt;this&lt;/code&gt; in the function. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;(function() { 
+  const person = { 
+    age: 21, 
+    name: &amp;#39;Bob&amp;#39;, 
+  }; 
+  
+  function printPerson() { 
+    console.log(`${this.name} is ${this.age}`); 
+  } 
+  
+  printPerson(); // FAILS! 
+})();&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;We could change the function to pass in person as a parameter or we can use &lt;code class=&quot;language-text&quot;&gt;call&lt;/code&gt; to specify to the function what the &lt;code class=&quot;language-text&quot;&gt;this&lt;/code&gt; context should be. &lt;/p&gt;
+&lt;p&gt;[code] (function() { const person = { age: 21, name: ‘Bob’, }; function printPerson() { console.log(&lt;code class=&quot;language-text&quot;&gt;${this.name} is ${this.age}&lt;/code&gt;); } printPerson.call(person); // Bob is 21 })(); [/code] &lt;/p&gt;
+&lt;p&gt;And voila, we passed in the &lt;code class=&quot;language-text&quot;&gt;person&lt;/code&gt; object and our &lt;code class=&quot;language-text&quot;&gt;printPerson&lt;/code&gt; function now knows to use this object as the &lt;code class=&quot;language-text&quot;&gt;this&lt;/code&gt; context. You can also pass parameters in addition to the context with call as below. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;(function() { 
+  const person = { 
+    age: 21, 
+    name: &amp;#39;Bob&amp;#39;, 
+  };
+
+  function printPerson(city, state) { 
+    console.log(`${this.name} is ${this.age} from ${city}, ${state}`); 
+  }
+
+  printPerson.call(person, &amp;#39;Chicago&amp;#39;, &amp;#39;IL&amp;#39;); // Bob is 21 from Chicago, IL 
+})();&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;This is the same thing as before just demonstrating that any number of parameters can be passed in after the context. The context is always the first parameter and then all others follow after.&lt;/p&gt;
+&lt;p&gt;That’s the basic idea with call, now what about bind?&lt;/p&gt;
+&lt;p&gt;Bind is actually pretty much the same as call except the function won’t be invoked immediately. It’s just a way to defer execution until later. If you’ve used React this will look familiar to you as bind is often used to bind functions to React Components.&lt;/p&gt;
+&lt;p&gt;Let’s update our code example to use bind this time. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;(function() { 
+  const person = { 
+    age: 21, 
+    name: &amp;#39;Bob&amp;#39;, 
+  }; 
+  const printPersonDeferred = printPerson.bind(person); 
+  
+  function printPerson() { 
+    console.log(`${this.name} is ${this.age}`); 
+  } 
+  
+  printPersonDeferred(); // Bob is 21 
+})();&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;And then expand on this to demonstrate parameters. This time we pass the parameters in when we make the deferred execution call rather than at the time bind is called. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;(function() { 
+  const person = { age: 21, name: &amp;#39;Bob&amp;#39;, }; 
+  
+  const printPersonDeferred = printPerson.bind(person); 
+  
+  function printPerson(city, state) { 
+    console.log(`${this.name} is ${this.age} from ${city}, ${state}`); 
+  } 
+  
+  printPersonDeferred(&amp;#39;Chicago&amp;#39;, &amp;#39;IL&amp;#39;); // Bob is 21 from Chicago, IL 
+})();&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;All right we have bind and call down. Let’s move on to apply. Apply is practically the same as call except apply requires you to pass in your parameters after the this context as an array. This is how we would need to modify our code to use apply below. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;(function() { 
+  const person = { age: 21, name: &amp;#39;Bob&amp;#39;, }; 
+  
+  function printPerson(city, state) { 
+    console.log(`${this.name} is ${this.age} from ${city}, ${state}`); 
+  } 
+  
+  printPerson.apply(person, [&amp;#39;Chicago&amp;#39;, &amp;#39;IL&amp;#39;]); // Bob is 21 from Chicago, IL 
+})();&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;So you see when you use apply JavaScript unpacks your arguments array into the parameter variables of the function you are calling with apply.&lt;/p&gt;</content:encoded></item></channel></rss>

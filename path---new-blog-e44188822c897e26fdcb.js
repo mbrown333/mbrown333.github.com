@@ -1,2 +1,0 @@
-webpackJsonp([0xd447daf153d9],{515:function(t,e){t.exports={data:{site:{siteMetadata:{title:"Gatsby Starter Blog",author:"Matthew Brown"}},markdownRemark:{id:"/Users/travis/build/mbrown333/mbrown333.github.io/src/pages/new-blog/index.md absPath of file >>> MarkdownRemark",html:"<p>Hello World</p>",frontmatter:{title:"Hello New Blog",date:"Invalid date"}}},pathContext:{slug:"/new-blog/",previous:{fields:{slug:"/hi-folks/"},frontmatter:{title:"New Beginnings"}},next:null}}}});
-//# sourceMappingURL=path---new-blog-e44188822c897e26fdcb.js.map
