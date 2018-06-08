@@ -1,8 +1,8 @@
 {
   "assetsByChunkName": {
     "path---my-second-post": [
-      "path---my-second-post-6c33c1a445e032a1212b.js",
-      "path---my-second-post-6c33c1a445e032a1212b.js.map"
+      "path---my-second-post-00cee715c06dcfed1e7c.js",
+      "path---my-second-post-00cee715c06dcfed1e7c.js.map"
     ],
     "component---src-pages-index-js": [
       "component---src-pages-index-js-f355d2aae2893701430f.js",
@@ -21,20 +21,20 @@
       "component---src-templates-blog-post-js-38fb534b4af13a29e143.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-606d8cf6ee070c37014c.js",
-      "component---src-layouts-index-js-606d8cf6ee070c37014c.js.map"
+      "component---src-layouts-index-js-cfdd6bd4892082ba6181.js",
+      "component---src-layouts-index-js-cfdd6bd4892082ba6181.js.map"
     ],
     "path---hi-folks": [
-      "path---hi-folks-1dd65ea8185f10061f93.js",
-      "path---hi-folks-1dd65ea8185f10061f93.js.map"
+      "path---hi-folks-592c0bc714f0f03bf0db.js",
+      "path---hi-folks-592c0bc714f0f03bf0db.js.map"
     ],
     "path---index": [
       "path---index-658dcd0fb30ab18226f7.js",
       "path---index-658dcd0fb30ab18226f7.js.map"
     ],
     "path---hello-world": [
-      "path---hello-world-6d0221b9ba4a22ab81d8.js",
-      "path---hello-world-6d0221b9ba4a22ab81d8.js.map"
+      "path---hello-world-d1540d8589c50f5d8b34.js",
+      "path---hello-world-d1540d8589c50f5d8b34.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js",
@@ -55,14 +55,14 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-371a785f8f956ac3a424.js",
+      "app-5d88ec8f98dfbe38d5b3.js",
       "build-js-styles.css",
-      "app-371a785f8f956ac3a424.js.map",
+      "app-5d88ec8f98dfbe38d5b3.js.map",
       "build-js-styles.css.map"
     ],
     "path---new-blog": [
-      "path---new-blog-d7e963ea3afd8cd03f42.js",
-      "path---new-blog-d7e963ea3afd8cd03f42.js.map"
+      "path---new-blog-e44188822c897e26fdcb.js",
+      "path---new-blog-e44188822c897e26fdcb.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
