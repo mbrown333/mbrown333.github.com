@@ -40,7 +40,17 @@ This works fine if you're working with objects in an object oriented fashion whe
 
 We could change the function to pass in person as a parameter or we can use `call` to specify to the function what the `this` context should be. 
 
-[code] (function() { const person = { age: 21, name: 'Bob', }; function printPerson() { console.log(`${this.name} is ${this.age}`); } printPerson.call(person); // Bob is 21 })(); [/code] 
+```javascript
+(function() { 
+  const person = { age: 21, name: 'Bob', }; 
+  
+  function printPerson() { 
+    console.log(`${this.name} is ${this.age}`); 
+  } 
+  
+  printPerson.call(person); // Bob is 21 
+})();
+``` 
 
 And voila, we passed in the `person` object and our `printPerson` function now knows to use this object as the `this` context. You can also pass parameters in addition to the context with call as below. 
 
