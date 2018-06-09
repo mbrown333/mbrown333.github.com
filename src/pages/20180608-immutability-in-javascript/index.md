@@ -122,7 +122,7 @@ Facebook has a js library build around immutable principles called immutable.js.
 >Much of what makes application development difficult is tracking mutation and maintaining state. Developing with immutable data encourages you to think differently about how data flows through your application.
 > — Immutable.js page
 
-## Conclusion
+## Wrap Up
 We've talked about the principles behind immutability and some ES6 tools for achieving it.  Hopefully this gives you a clearer understanding as it an increasingly relevant topic in modern Javascript.
 
 Thank you for reading!
