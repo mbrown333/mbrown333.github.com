@@ -27,8 +27,8 @@ class Bio extends React.Component {
           }}
         />
         <p>
-          Written by <strong>Matthew Brown</strong> is a full stack developer specializing in all things JavaScript and based out of Kansas City.
-          Connect with him on <a href="https://www.linkedin.com/in/matthew-brown-13b72b91/">LinkedIn</a> or <a href="https://twitter.com/mattbrown331">Twitter</a>.
+          Written by <strong>Matthew Brown</strong>, a full stack engineer specializing in all things JavaScript and based out of Kansas City.
+          Connect with him on <a href="https://www.linkedin.com/in/matthew-brown-13b72b91/">LinkedIn</a>, <a href="https://github.com/mbrown333">Github</a>, or <a href="https://twitter.com/mattbrown331">Twitter</a>.
         </p>
       </div>
     )

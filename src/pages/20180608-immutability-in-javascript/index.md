@@ -51,7 +51,7 @@ function app(state = initalState, action) {
 
 Same result but my preference is to use the spread operator as it keeps things a bit more concise and explicit.  All just personal preference though.
 
-The same result can be achieved if you want to make the property that is changed dynamic.  The following will assign whichever property that it recieves in `action.field`.
+The same result can be achieved if you want to make the property that is changed dynamic.  The following will assign whichever property that it receives in `action.field`.
 
 ```javascript
 function app(state = initalState, action) {
