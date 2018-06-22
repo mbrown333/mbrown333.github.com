@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Matthew Brown's JS Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://github.com/mbrown333/mbrown333.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 13 Jun 2018 14:05:00 GMT</lastBuildDate><item><title><![CDATA[Why Your Team Should Be Doing Code Reviews]]></title><description><![CDATA[I believe that code reviews are one of the best things a development team can do for adding value to their development process.  I know from…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/20180613-why-you-should-be-doing-code-reviews/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/20180613-why-you-should-be-doing-code-reviews/</guid><pubDate>Wed, 13 Jun 2018 07:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I believe that code reviews are one of the best things a development team can do for adding value to their development process.  I know from my experience that not every development shop does reviews and those that do aren’t doing them in a way that gets maximum benefits.  In this article I’m going to outline what I think are the greatest benefits of code reviews, how to get the most value out of them, and common mistakes teams make when doing code reviews.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Matthew Brown's JS Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://github.com/mbrown333/mbrown333.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jun 2018 03:44:09 GMT</lastBuildDate><item><title><![CDATA[Functional Programming]]></title><description><![CDATA[In this article I’m going to discuss the functional programming paradigm and the benefits of using that paradigm in your code.  I’ll be…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/20180621-functional-programming/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/20180621-functional-programming/</guid><pubDate>Thu, 21 Jun 2018 06:30:00 GMT</pubDate><content:encoded>&lt;p&gt;In this article I’m going to discuss the functional programming paradigm and the benefits of using that paradigm in your code.  I’ll be covering the core functional programming concepts along with higher order functions, functional composition, and pure functions.  &lt;/p&gt;
+&lt;p&gt;Functional programming has been growing in popularity in the last few years.  I work on a team that follows functional programming and have found it to be an effective approach for building web applications with React and Redux.  &lt;/p&gt;
+&lt;p&gt;If you haven’t worked in fp before it can take a little while to catch on because you have to think about how you do things differently.  But as I’ll show in this article none of the concepts behind functional programming are overly complicated to understand.&lt;/p&gt;
+&lt;p&gt;Let’s dive in.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Object-oriented programming makes code understandable by encapsulating moving parts. Functional programming makes code understandable by minimizing moving parts.” -Michael Feathers&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;What is functional programming?&lt;/h2&gt;
+&lt;p&gt;Let’s start by going over the core principles behind the functional programming paradigm.  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Don’t mutate state.&lt;/li&gt;
+&lt;li&gt;Avoid shared state.&lt;/li&gt;
+&lt;li&gt;Use pure functions with no side effects.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;First, state should not be mutated.  One of the issues with OOP is that state can be mutated anywhere which makes it hard to track down unexpected changes in a program.  Rather the idea is that rather than mutating existing objects in state you should use the previous state and pure functions to calculate what the next state will be.&lt;/p&gt;
+&lt;p&gt;This is the concept that makes Redux’s time travel debugging possible.  There can only be one value for state at any given time and stepping backward though actions will show what the state was at every step.&lt;/p&gt;
+&lt;p&gt;In Javascript don’t confuse &lt;code class=&quot;language-text&quot;&gt;const&lt;/code&gt; with immutable.  &lt;code class=&quot;language-text&quot;&gt;const&lt;/code&gt; will prevent you from reassigning a new object reference to that variable, but you can still change the properties of that object.  &lt;code class=&quot;language-text&quot;&gt;Object.freeze&lt;/code&gt; will prevent all the top level properties from being mutated, but if there is an object as a property then that object’s properties can still be changed unless you go traverse through and freeze each object property.&lt;/p&gt;
+&lt;p&gt;I previously wrote &lt;a href=&quot;/20180608-immutability-in-javascript/&quot;&gt;an article on immutability in Javascript so you can read more on that here.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Typically if you studied computer science in school you learned heavily in the Object Oriented Programming, but were likely exposed to functional programming as well.  In the past few years functional programming has been growing in popularity and this definitely holds true for the Javascript community.&lt;/p&gt;
+&lt;p&gt;Next we’ll discuss some functional programming tools.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Simplicity is prerequisite for reliability. -Edsger W. Dijkstra&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Pure Functions&lt;/h2&gt;
+&lt;p&gt;A pure function has no side effects.  So for each input a pure function will give you the exact same result every time.  &lt;/p&gt;
+&lt;p&gt;The benefit of using pure functions is that they are typically easier to debug as they are predictable in their outcome and simple to read.&lt;/p&gt;
+&lt;p&gt;Examples of side effects are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;an xhr call&lt;/li&gt;
+&lt;li&gt;changing a variable outside of the function’s scope&lt;/li&gt;
+&lt;li&gt;console log&lt;/li&gt;
+&lt;li&gt;outputting to a file&lt;/li&gt;
+&lt;li&gt;calling other functions with side effects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let’s take a look at an example of a function with side effects:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const a = 1;
+const a1 = () =&amp;gt; a += 1;
+a1(); 
+console.log(a); // 2
+a1();
+console.log(a); // 3&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;The result of this function will give you a different result each time as every time it is called it continues to increment a because it’s operating on a variable that is not an input to itself.&lt;/p&gt;
+&lt;p&gt;Let’s change our example to a pure function.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const b = 1;
+const b1 = (val) =&amp;gt; val += 1;
+console.log(b1(b)); // 2
+console.log(b1(b)); // 2&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;In this case &lt;code class=&quot;language-text&quot;&gt;b1&lt;/code&gt; will give you the same result every time for any given input you pass into it unlike &lt;code class=&quot;language-text&quot;&gt;a1&lt;/code&gt; which mutates a variable outside of its own scope.  &lt;code class=&quot;language-text&quot;&gt;b1&lt;/code&gt; only operates on the variable that it takes in as an input.&lt;/p&gt;
+&lt;h2&gt;Higher Order Functions&lt;/h2&gt;
+&lt;p&gt;Higher order functions are functions that can accept another function as a parameter or return another function as a result.  This is how functional programming achieves reusability with a set of reusable utility functions as opposed to &lt;em&gt;Object Oriented Programming&lt;/em&gt; which locates functions and data together in classes.&lt;/p&gt;
+&lt;p&gt;Higher order functions are possible in javascript because it has &lt;em&gt;first class functions&lt;/em&gt;.  Functions can be passed as parameters to other functions, assigned to variables, and returned from other functions.&lt;/p&gt;
+&lt;p&gt;The array methods &lt;code class=&quot;language-text&quot;&gt;map&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;reduce&lt;/code&gt;, and &lt;code class=&quot;language-text&quot;&gt;filter&lt;/code&gt; are examples of extremely useful and reusable higher order functions.  Once you learn to use these array methods it totally changes the way you write code, because they are fantastic.&lt;/p&gt;
+&lt;p&gt;Let’s  demonstrate what a simple higher order function looks like:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const doubleArray = (a) =&amp;gt; a.map(i =&amp;gt; i * 2);
+const reverseArray = (b) =&amp;gt; b.reverse();
+
+const compose = (a, b) =&amp;gt; (input) =&amp;gt; b(a(input));
+
+const input = [1, 2, 3];
+console.log(compose(doubleArray, reverseArray)(input)); // [6, 4, 2]&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Here we define a couple of functions to operate on arrays.  The &lt;code class=&quot;language-text&quot;&gt;compose&lt;/code&gt; functions allow us to combine these two operations and gives us a function as a result.  We then can call that resulting function and pass in our &lt;code class=&quot;language-text&quot;&gt;input&lt;/code&gt; array.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies and the other way is to make it so complicated that there are no obvious deficiencies. — C.A.R. Hoare, The 1980 ACM Turing Award Lecture&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Functional Composition&lt;/h2&gt;
+&lt;p&gt;Functional composition is combining or chaining simple functions to make up more complex functions.  Again, since Javascript has first class functions it makes it easy to apply functions to the results of other functions.&lt;/p&gt;
+&lt;p&gt;This can be demonstrated using the array map, reduce, and filter methods by chaining them together:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const list = [1, 2, 6, 8];
+
+const result = list.map(a =&amp;gt; a * 3)
+  .filter(b =&amp;gt; b &amp;gt; 3)
+  .reduce((sum, c) =&amp;gt; {
+    sum += c;
+    return sum;
+  });
+
+console.log(result); // 48&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;The result of each function returns a new array and we call the next function in the chain on that resulting array.&lt;/p&gt;
+&lt;p&gt;Let’s go over another example where we combine two simple functions into a single function.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const triple = (a) =&amp;gt; a * 3;
+const minus2 = (b) =&amp;gt; b - 2;
+
+const tripleMinus2 = (c) =&amp;gt; triple(minus2(c));
+
+console.log(tripleMinus2(5)); // 9
+console.log(tripleMinus2(45)); // 129
+console.log(tripleMinus2(678)); // 2028&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;These are trivial examples obviously, but in my experience organizing your code into small utility functions makes them easy to reuse and combine with other utility functions.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The object-oriented version of spaghetti code is, of course, ‘lasagna code’. Too many layers. -Roberto Waltman&lt;/p&gt;
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[Why Your Team Should Be Doing Code Reviews]]></title><description><![CDATA[I believe that code reviews are one of the best things a development team can do for adding value to their development process.  I know from…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/20180613-why-you-should-be-doing-code-reviews/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/20180613-why-you-should-be-doing-code-reviews/</guid><pubDate>Wed, 13 Jun 2018 07:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I believe that code reviews are one of the best things a development team can do for adding value to their development process.  I know from my experience that not every development shop does reviews and those that do aren’t doing them in a way that gets maximum benefits.  In this article I’m going to outline what I think are the greatest benefits of code reviews, how to get the most value out of them, and common mistakes teams make when doing code reviews.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Code is like humor. When you have to explain it, it’s bad. – Cory House&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -78,7 +178,7 @@
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;p&gt;Same result but my preference is to use the spread operator as it keeps things a bit more concise and explicit.  All just personal preference though.&lt;/p&gt;
-&lt;p&gt;The same result can be achieved if you want to make the property that is changed dynamic.  The following will assign whichever property that it recieves in &lt;code class=&quot;language-text&quot;&gt;action.field&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The same result can be achieved if you want to make the property that is changed dynamic.  The following will assign whichever property that it receives in &lt;code class=&quot;language-text&quot;&gt;action.field&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot;&gt;
       &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; initalState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; action&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token keyword&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;action&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;type&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
