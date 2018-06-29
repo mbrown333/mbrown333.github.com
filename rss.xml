@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Matthew Brown's JS Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://github.com/mbrown333/mbrown333.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jun 2018 03:45:04 GMT</lastBuildDate><item><title><![CDATA[Functional Programming]]></title><description><![CDATA[In this article I’m going to discuss the functional programming paradigm and the benefits of using that paradigm in your code.  I’ll be…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/20180621-functional-programming/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/20180621-functional-programming/</guid><pubDate>Thu, 21 Jun 2018 06:30:00 GMT</pubDate><content:encoded>&lt;p&gt;In this article I’m going to discuss the functional programming paradigm and the benefits of using that paradigm in your code.  I’ll be covering the core functional programming concepts along with higher order functions, functional composition, and pure functions.  &lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Matthew Brown's JS Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://github.com/mbrown333/mbrown333.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 29 Jun 2018 22:18:53 GMT</lastBuildDate><item><title><![CDATA[Functional Programming]]></title><description><![CDATA[In this article I’m going to discuss the functional programming paradigm and the benefits of using that paradigm in your code.  I’ll be…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/20180621-functional-programming/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/20180621-functional-programming/</guid><pubDate>Thu, 21 Jun 2018 06:30:00 GMT</pubDate><content:encoded>&lt;p&gt;In this article I’m going to discuss the functional programming paradigm and the benefits of using that paradigm in your code.  I’ll be covering the core functional programming concepts along with higher order functions, functional composition, and pure functions.  &lt;/p&gt;
 &lt;p&gt;Functional programming has been growing in popularity in the last few years.  I work on a team that follows functional programming and have found it to be an effective approach for building web applications with React and Redux.  &lt;/p&gt;
 &lt;p&gt;If you haven’t worked in fp before it can take a little while to catch on because you have to think about how you do things differently.  But as I’ll show in this article none of the concepts behind functional programming are overly complicated to understand.&lt;/p&gt;
 &lt;p&gt;Let’s dive in.&lt;/p&gt;
@@ -398,4 +398,410 @@ console.log(tripleMinus2(678)); // 2028&lt;/code&gt;&lt;/pre&gt;
   printPerson.apply(person, [&amp;#39;Chicago&amp;#39;, &amp;#39;IL&amp;#39;]); // Bob is 21 from Chicago, IL 
 })();&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;So you see when you use apply JavaScript unpacks your arguments array into the parameter variables of the function you are calling with apply.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;So you see when you use apply JavaScript unpacks your arguments array into the parameter variables of the function you are calling with apply.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Building an Image Upload App with Angular 4, NodeJS, PostgreSQL, and Amazon S3 – Part 2]]></title><description><![CDATA[Building a Node/Express User service with JWT authentication In  Part 1  we laid the groundwork for building our web services by setting up…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/20170630-image-upload-app-part2/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/20170630-image-upload-app-part2/</guid><pubDate>Fri, 30 Jun 2017 03:55:49 GMT</pubDate><content:encoded>&lt;h2&gt;Building a Node/Express User service with JWT authentication&lt;/h2&gt;
+&lt;p&gt;In &lt;a href=&quot;/20170630-image-upload-app-part1&quot;&gt;Part 1&lt;/a&gt; we laid the groundwork for building our web services by setting up Docker containers. &lt;/p&gt;
+&lt;p&gt;Part 2 consist of defining and creating a user table in our PostgreSQL data store and then building a user service that other services and our user interface can talk to. We’ll be using an ORM called knex to handle our database queries. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Requirements&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Users should be able to register and login&lt;/li&gt;
+&lt;li&gt;We will be using JWT based security to secure our application and the service will be responsible for generating the tokens based on user credentials.&lt;/li&gt;
+&lt;li&gt;Our images service will also communicate with the user service to validate that a user is signed in. If we were creating other services they could also make use of the user service.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In order to follow along with building the service in this article you’ll need to have completed Part 1 or clone the git repository and checkout the Part 2 tag in addition to having Docker installed and running locally: &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git clone https://github.com/mbrown333/angular4-node-image-upload-app.git 
+cd angular4-node-image-upload-app 
+git checkout tag/Part2 
+docker-compose up&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Database Table Setup&lt;/h2&gt;
+&lt;p&gt;One more thing we’ll need is the knex cli for creating migrations. Use the command &lt;code class=&quot;language-text&quot;&gt;npm i -g knex-cli&lt;/code&gt; to install. &lt;/p&gt;
+&lt;p&gt;Next step will be to add a knexfile to configure the ORM that we’ll be using to build out our service: &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;/users-api/knexfile.js&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const path = require(&amp;#39;path&amp;#39;); 
+
+module.exports = { 
+  development: { 
+    client: &amp;#39;pg&amp;#39;, 
+    connection: process.env.DATABASE_URL, 
+    migrations: { 
+      directory: path.join(__dirname, &amp;#39;db&amp;#39;, &amp;#39;migrations&amp;#39;) 
+    } 
+  } 
+}&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Here we’ve created a config object for our development object. We’re using the ‘pg’ client which is for PostgreSQL. Knex can connect to other types of databases and if you take a look in our package.json file you’ll notice that the pg package is included in the dependencies. &lt;/p&gt;
+&lt;p&gt;For connection we give the environment variable that we specified the database connection string in the docker-compose.yml file. And then finally we specify a directory (/db/migrations) to store migrations in. &lt;/p&gt;
+&lt;p&gt;Now we’re ready to create a migration using the knex-cli. Open up a command prompt in the /users-api folder and enter the following commands: &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install knex knex migrate:make users&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;This will create a migration file in the /db/migrations folder that has the following structure:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;exports.up = function(knex, Promise) { 
+
+}; 
+
+exports.down = function(knex, Promise) { 
+
+}; &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;We’ll be putting the changes we want to make in the up function, and a way to reverse those changes in the down function. What we want to accomplish with this migration is to create our user table and define the structure. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;exports.up = (knex, Promise) =&amp;gt; { 
+  return knex.schema.createTable(&amp;#39;users&amp;#39;, table =&amp;gt; { 
+    table.increments(); 
+    table.timestamp(&amp;#39;createdAt&amp;#39;).notNullable().defaultTo(knex.raw(&amp;#39;now()&amp;#39;)); 
+    table.string(&amp;#39;username&amp;#39;).unique().notNullable(); 
+    table.string(&amp;#39;password&amp;#39;).notNullable(); 
+  }); 
+}; 
+
+exports.down = function(knex, Promise) { 
+  return knex.schema.dropTable(&amp;#39;users&amp;#39;); 
+};&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;&lt;em&gt;/users-api/db/db.js&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const config = require(&amp;#39;../knexfile.js&amp;#39;); 
+const knex = require(&amp;#39;knex&amp;#39;)(config[&amp;#39;development&amp;#39;]); 
+
+module.exports = knex; 
+
+knex.migrate.latest([&amp;#39;development&amp;#39;]);&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Pretty straightforward here, we’re just creating a users table to store username and password and an id field. Then in the db.js file we pull our config and knexfile and run the migration we just created. Now that we have our data store defined we’re ready to create our routes. We’ll create a file in the /users-api/routes folder to define our user routes. We’ll be creating three routes to register a user, login a user, and verify a user is authenticated. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;/users-api/routes/users.js&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const express = require(&amp;#39;express&amp;#39;); 
+const router = express.Router(); 
+const knex = require(&amp;#39;../db/db&amp;#39;); 
+const moment = require(&amp;#39;moment&amp;#39;); 
+const jwt = require(&amp;#39;jwt-simple&amp;#39;); 
+const bcrypt = require(&amp;#39;bcryptjs&amp;#39;); 
+
+router.post(&amp;#39;/user&amp;#39;, async (req, res) =&amp;gt; { 
+  try { 
+    const salt = bcrypt.genSaltSync(); 
+    const hash = bcrypt.hashSync(req.body.password, salt); 
+    
+    const user = await knex(&amp;#39;users&amp;#39;) 
+      .insert({ username: req.body.username, password: hash }) 
+      .returning(&amp;#39;*&amp;#39;); 
+      
+    res.json({ success: true, token: encode(user[0])}); 
+  } catch (err) { 
+    res.status(500).json({ 
+      success: false, 
+      errorMessage: err 
+    }); 
+  } }); 
+  
+  function encode(user) { 
+    const token = { 
+      exp: moment().add(7, &amp;#39;days&amp;#39;).unix(), 
+      iat: moment().unix(), 
+      sub: user.id 
+    }; 
+    
+    return jwt.encode(token, process.env.TOKEN_SECRET); 
+  } 
+  
+  module.exports = router;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;This first one is the route for registering a new user. A user will enter a username and password and then use bcrypt to generate a hash and store the hash as a password instead of the plain text version. You’ll see using knex to generate SQL queries is very straightforward. We specify the table ‘users’ and then pass the object to store. &lt;/p&gt;
+&lt;p&gt;Finally the newly created user will be returned so that we can use the jwt-simple module to generate a JWT token to return in the JSON reponse body. Now that users can register they need to have the ability to login. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;/users-api/routes/users.js&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;router.post(&amp;#39;/login&amp;#39;, async (req, res) =&amp;gt; { 
+  try { 
+    const credentials = { 
+      username: req.body.username, 
+      password: req.body.password 
+    }; 
+    
+    const user = await knex(&amp;#39;users&amp;#39;)
+      .where({ username: credentials.username })
+      .first(); 
+      
+    if (!user || !bcrypt.compareSync(credentials.password, user.password)) { 
+      throw new Error(&amp;#39;Incorrect password&amp;#39;); 
+    } 
+      
+    res.json({ success: true, token: encode(user) }); 
+  } catch (err) { 
+    res.status(500).json({ status: &amp;#39;error&amp;#39;, message: err }); 
+  } 
+});&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt; We’ll use the username passed in by the user to find a user record in the data store and then let bcrypt test if the entered password matches the hash stored in the database. Then if it does, a token is created and passed back in the response body. &lt;/p&gt;
+&lt;p&gt; &lt;em&gt;/users-api/routes/users.js&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;router.get(&amp;#39;/user&amp;#39;, isAuthenticated, (req, res) =&amp;gt; { 
+  res.json({ status: &amp;#39;success&amp;#39;, user: req.user }) 
+ }); 
+  
+ function decode(token, callback) { 
+   const decodedJwt = jwt.decode(token, process.env.TOKEN_SECRET); 
+   const now = moment().unix(); 
+   
+   if (now &amp;gt; decodedJwt.exp) { 
+     callback(&amp;#39;Token has expired.&amp;#39;); 
+   } else { 
+     callback(null, decodedJwt); 
+   } 
+ } 
+ 
+ function isAuthenticated(req, res, next) { 
+   if (!(req.headers &amp;amp;&amp;amp; req.headers.authorization)) { 
+     return res.status(401).json({ errorMessage: &amp;#39;Unauthorized&amp;#39;} ); 
+   } 
+   
+   const token = req.headers.authorization; 
+   decode(token, async (err, payload) =&amp;gt; { 
+     try { 
+       if (err) { 
+         return res.status(401).json({ errorMessage: &amp;#39;Token expired&amp;#39;} ); 
+       } 
+       
+       const user = await knex(&amp;#39;users&amp;#39;).where({ id: parseInt(payload.sub, 10) }).first() 
+       req.user = user.id; 
+       
+       return next(); 
+     } catch (err) { 
+       res.status(500).json({ errorMessage: err }); 
+     } 
+   }) 
+ }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Finally we need a route to verify that a user is logged in and include their id in the response if successful. Using the bcrypt and jwt-simple Node modules to do the heavy lifting you can see that it’s fairly straightforward to create basic JWT authentication for Node services. Putting it all together, here is our final routes file: &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;/users-api/routes/users.js&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const express = require(&amp;#39;express&amp;#39;);
+const router = express.Router();
+const knex = require(&amp;#39;../db/db&amp;#39;);
+const moment = require(&amp;#39;moment&amp;#39;);
+const jwt = require(&amp;#39;jwt-simple&amp;#39;);
+const bcrypt = require(&amp;#39;bcryptjs&amp;#39;);
+
+router.post(&amp;#39;/user&amp;#39;, async (req, res) =&amp;gt; {
+    try {
+        const salt = bcrypt.genSaltSync();
+        const hash = bcrypt.hashSync(req.body.password, salt);
+
+        const user = await knex(&amp;#39;users&amp;#39;)
+                        .insert({ username: req.body.username, password: hash })
+                        .returning(&amp;#39;*&amp;#39;);
+
+        res.json({ success: true, token: encode(user[0])});
+    } catch (err) {
+        res.status(500).json({ success: false, errorMessage: err });
+    }
+});
+
+router.post(&amp;#39;/login&amp;#39;, async (req, res) =&amp;gt; {
+    try {
+        const credentials = {
+            username: req.body.username,
+            password: req.body.password
+        };
+
+        const user = await knex(&amp;#39;users&amp;#39;).where({ username: credentials.username }).first();
+        if (!user || !bcrypt.compareSync(credentials.password, user.password)) {
+            throw new Error(&amp;#39;Incorrect password&amp;#39;);
+        }
+
+        res.json({ success: true, token: encode(user) });
+    } catch (err) {
+        res.status(500).json({ status: &amp;#39;error&amp;#39;, message: err });
+    }
+});
+
+router.get(&amp;#39;/user&amp;#39;, isAuthenticated, (req, res) =&amp;gt; {
+    res.json({
+        status: &amp;#39;success&amp;#39;,
+        user: req.user
+    })
+});
+
+function encode(user) {
+    const token = {
+        exp: moment().add(7, &amp;#39;days&amp;#39;).unix(),
+        iat: moment().unix(),
+        sub: user.id
+    };
+
+    return jwt.encode(token, process.env.TOKEN_SECRET);
+}
+
+function decode(token, callback) {
+    const decodedJwt = jwt.decode(token, process.env.TOKEN_SECRET);
+    const now = moment().unix();
+
+    if (now &amp;gt; decodedJwt.exp) {
+        callback(&amp;#39;Token has expired.&amp;#39;);
+    } else {
+        callback(null, decodedJwt);
+    }
+}
+
+function isAuthenticated(req, res, next) {
+    if (!(req.headers &amp;amp;&amp;amp; req.headers.authorization)) {
+        return res.status(401).json({ errorMessage: &amp;#39;Unauthorized&amp;#39;} );
+    }
+
+    const token = req.headers.authorization;
+    decode(token, async (err, payload) =&amp;gt; {
+        try {
+            if (err) {
+                return res.status(401).json({ errorMessage: &amp;#39;Token expired&amp;#39;} );
+            }
+
+            const user = await knex(&amp;#39;users&amp;#39;).where({ id: parseInt(payload.sub, 10) }).first()
+            req.user = user.id;
+            return next();
+        } catch (err) {
+            res.status(500).json({ errorMessage: err });
+        }
+    })
+}
+
+module.exports = router;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;</content:encoded></item><item><title><![CDATA[Building an Image Upload App with Angular 4, NodeJS, PostgreSQL, and Amazon S3 - Part 1]]></title><description><![CDATA[In this four part article we will be building a web application that allows user to upload images and manage those images through the user…]]></description><link>https://github.com/mbrown333/mbrown333.github.io/20170630-image-upload-app-part1/</link><guid isPermaLink="false">https://github.com/mbrown333/mbrown333.github.io/20170630-image-upload-app-part1/</guid><pubDate>Fri, 30 Jun 2017 03:38:25 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;In this four part article we will be building a web application that allows user to upload images and manage those images through the user interface. We will be using NodeJS to build a couple of RESTful APIs, PostgreSQL for a data store, and an Angular 4 front end. &lt;/p&gt;
+&lt;p&gt;We’ll also be using Docker to containerize the databases, Node services, and the UI server. Also for file storage we will be using Amazon S3. I’ve tried to simplify this example as much as possible, but there are still quite a few steps to go through to build our application. Here’s an overview of what we’ll be tackling in each part of the article: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Part 1:&lt;/strong&gt; Set up our containers with Docker&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part 2:&lt;/strong&gt; Build a RESTful web service with NodeJS/Express for users and JWT authentication&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part 3:&lt;/strong&gt; Build a RESTful web service with NodeJS/Express for image uploads and store uploads in Amazon S3&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part 4:&lt;/strong&gt; Build the User interface using Angular 4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The source code can be found on &lt;a href=&quot;https://github.com/mbrown333/angular4-node-image-upload-app&quot;&gt;github&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt; &lt;strong&gt;Prerequisites&lt;/strong&gt; Install Docker: &lt;a href=&quot;https://www.docker.com/community-edition&quot;&gt;https://www.docker.com/community-edition&lt;/a&gt; Install latest versions of Node/npm Clone the project directory and checkout the Part1 tag: &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git clone https://github.com/mbrown333/angular4-node-image-upload-app.git 
+cd angular4-node-image-upload-app git checkout tag/Part1&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Users and Images Databases&lt;/h2&gt;
+&lt;p&gt;Docker is a popular development tool used to create portable and lightweight containers for running applications with all of the dependencies involved. I’m assuming you’re familiar with Docker already, but if not check it out here: &lt;a href=&quot;https://www.docker.com/&quot;&gt;https://www.docker.com/&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;The main advantage to using containers is you can run it on any machine and get the exact same behavior from your application. We’ll start by building out our database containers. We will be using PostgreSQL for our data stores.2 &lt;/p&gt;
+&lt;p&gt;PostgreSQL is an open source relational database. We’ll be using an ORM called knex, but more on that later. Docker makes it very easy to get instances of our databases up and running. First, open up a command prompt in the project repository and change into the &lt;code class=&quot;language-text&quot;&gt;/users-api&lt;/code&gt; and create a directory called &lt;code class=&quot;language-text&quot;&gt;/db&lt;/code&gt;. In that directory we’ll create an SQL script to create the users database.
+&lt;em&gt;/users-api/db/create.sql&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;CREATE DATABASE users;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;And then we’ll add the Dockerfile for our user database:
+&lt;em&gt;/users-api/db/Dockerfile&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;FROM postgres 
+ADD create.sql /docker-entrypoint-initdb.d&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;This specifies for Docker to use the postgres image which is already defined. The second lines adds our script for creating the users database within the container when it starts. Adding it to &lt;code class=&quot;language-text&quot;&gt;/docker-entrypoint-initdb.d&lt;/code&gt; ensures that it will get executed when the container boots up. The final piece we need to put in place before starting up our users database connection is the docker-compose.yml file in the project root folder: &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;/docker-compose.yml&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;version: &amp;#39;2.1&amp;#39; 
+
+services: 
+  users-db: 
+    container_name: users-db 
+    build: ./users-api/db 
+    ports: 
+      - &amp;#39;5433:5432&amp;#39; 
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres 
+    healthcheck: 
+      test: exit 0&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;We’ll add more to this file as we go, but let’s note a few things here. We give the container the name users-db which we’ll use here in a moment to start the container. &lt;/p&gt;
+&lt;p&gt;We’re exposing the 5432 port (default for PostgreSQL) on the container to port 5433 on our host machine. And we’re declaring the PostgreSQL default admin username and password for the container. &lt;/p&gt;
+&lt;p&gt;Now let’s get our first container up and running. From a command prompt in the root folder of our project enter: &lt;code class=&quot;language-text&quot;&gt;docker-compose up --build -d users-db&lt;/code&gt;. To see the status of all running containers use the command &lt;code class=&quot;language-text&quot;&gt;docker-compose ps&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;Some other useful commands: Tail container logs: &lt;code class=&quot;language-text&quot;&gt;docker-compose logs -f users-db&lt;/code&gt;
+Open up a bash in a container: &lt;code class=&quot;language-text&quot;&gt;docker-compose run users-db bash&lt;/code&gt; (then &lt;code class=&quot;language-text&quot;&gt;exit&lt;/code&gt; to close) &lt;/p&gt;
+&lt;p&gt;Our container is now running in the background. Easy enough right? We’ll follow the same steps to kick off our images database. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;/images-api/db/create.sql&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;CREATE DATABASE images;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;&lt;em&gt;/images-api/db/Dockerfile&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;FROM postgres 
+ADD create.sql /docker-entrypoint-initdb.d&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;&lt;em&gt;/docker-compose.yml&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;version: &amp;#39;2.1&amp;#39; 
+
+services: 
+  users-db: 
+    container_name: users-db 
+    build: ./users-api/db 
+    ports: 
+      - &amp;#39;5433:5432&amp;#39; 
+    environment: 
+      - POSTGRES_USER=postgres 
+      - POSTGRES_PASSWORD=postgres 
+    healthcheck: 
+      test: exit 0 
+  images-db: 
+    container_name: images-db 
+    build: ./images-api/db 
+    ports: 
+      - &amp;#39;5434:5432&amp;#39; 
+    environment: 
+      - POSTGRES_USER=postgres 
+      - POSTGRES_PASSWORD=postgres 
+    healthcheck: 
+      test: exit 0&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Very similar to before. Only real change is we give our image database container the name images-db and connect it to the 5434 host port. And now we’re ready to kick off this container as well: &lt;code class=&quot;language-text&quot;&gt;docker-compose up --build -d images-db&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;And then there were two. If we run the &lt;code class=&quot;language-text&quot;&gt;docker-compose ps&lt;/code&gt; command again we’ll see the following if all went well: &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Name Command State Ports 
+-------------------------------------------------------------------------- 
+images-db docker-entrypoint.sh postgres Up 0.0.0.0:5434-&amp;gt;5432/tcp 
+users-db docker-entrypoint.sh postgres Up 0.0.0.0:5433-&amp;gt;5432/tcp &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Users and Images NodeJs/Express Services&lt;/h2&gt;
+&lt;p&gt;Now that we have our database ready to go, we’ll move on to our two services. We’ll start with our users service first, but as with the database containers both services will look similar. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;/users-api/Dockerfile&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;FROM node:latest 
+
+# set working directory 
+RUN mkdir /usr/src/app 
+WORKDIR /usr/src/app 
+
+# add `/usr/src/node_modules/.bin` to $PATH 
+ENV PATH /usr/src/app/node_modules/.bin:$PATH 
+
+# install and cache app dependencies 
+ADD package.json /usr/src/app/package.json 
+RUN npm install 
+
+# start app 
+CMD [&amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot;]&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;There’s a little more to this Dockerfile than what we saw with the databases. We’re using the node image from Docker, setting up a directory for our application on the container machine, adding the node_modules folder to the PATH, and then installing all of our npm dependencies. After all this is complete, the container will run npm start which will kick off the node server. If you look in the package.json we have specified &lt;code class=&quot;language-text&quot;&gt;nodemon server.js&lt;/code&gt; which will run the server and automatically restart it if it errors out for any reason. &lt;/p&gt;
+&lt;p&gt;Now we’ll add our users-api to the docker compose yaml file: &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;/docker-compose.yml&lt;/em&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; .. 
+  users-api: 
+    container_name: users-api 
+    build: ./users-api/ 
+    volumes: 
+      - &amp;#39;./users-api:/usr/src/app&amp;#39; 
+      - &amp;#39;./users-api/package.json:/usr/src/package.json&amp;#39; 
+      - /usr/src/app/node_modules 
+    ports: 
+      - &amp;#39;3000:3000&amp;#39; 
+    environment: 
+      - DATABASE_URL=postgres://postgres:postgres@users-db:5432/users 
+      - NODE_ENV=${NODE_ENV} \- TOKEN_SECRET=ICzX8uISDW9Bv2ZcsPUbeZx8tpVa6ajS 
+    depends_on: 
+      users-db: condition: service_healthy 
+    links: 
+      - users-db&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;</content:encoded></item></channel></rss>
