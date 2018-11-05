@@ -4,6 +4,10 @@
       "component---src-pages-index-js-f3e3f46076fcac8062fb.js",
       "component---src-pages-index-js-f3e3f46076fcac8062fb.js.map"
     ],
+    "path---20181105-serverless": [
+      "path---20181105-serverless-8bc80b476a0ab7718e15.js",
+      "path---20181105-serverless-8bc80b476a0ab7718e15.js.map"
+    ],
     "path---20180608-a-new-beginning": [
       "path---20180608-a-new-beginning-15b9b1d8a8c5cd95480f.js",
       "path---20180608-a-new-beginning-15b9b1d8a8c5cd95480f.js.map"
@@ -25,8 +29,8 @@
       "component---src-layouts-index-js-22164aa17f07f6905a84.js.map"
     ],
     "path---index": [
-      "path---index-7af408cb86e9c964f5a2.js",
-      "path---index-7af408cb86e9c964f5a2.js.map"
+      "path---index-068451b0a87d1e9e30d8.js",
+      "path---index-068451b0a87d1e9e30d8.js.map"
     ],
     "path---20180409-javascripts-call-bind-and-apply-a-quick-explanation": [
       "path---20180409-javascripts-call-bind-and-apply-a-quick-explanation-b8e4f34647465d9c7179.js",
@@ -71,9 +75,9 @@
       "path---20180409-functional-stateless-components-in-react-4c558c742fdc7836f17b.js.map"
     ],
     "app": [
-      "app-18fe64eee8896b17083b.js",
+      "app-17cc49b066cfc602fff9.js",
       "build-js-styles.css",
-      "app-18fe64eee8896b17083b.js.map",
+      "app-17cc49b066cfc602fff9.js.map",
       "build-js-styles.css.map"
     ],
     "path---404": [
@@ -81,8 +85,8 @@
       "path---404-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---20180621-functional-programming": [
-      "path---20180621-functional-programming-f5f7e09404935bbdaf90.js",
-      "path---20180621-functional-programming-f5f7e09404935bbdaf90.js.map"
+      "path---20180621-functional-programming-9901de0d95120ccb0fe7.js",
+      "path---20180621-functional-programming-9901de0d95120ccb0fe7.js.map"
     ]
   }
 }
